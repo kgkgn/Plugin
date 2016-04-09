@@ -106,6 +106,7 @@ class PluginLoader:
         # check observer list and send result to observing plugin
         for pluginName, observingList in self._observerList.items():
             if functionName in observingList:
+                print('INFO: Plugin %s is intercepting function %s' % (pluginName, functionName))
                 return self._pluginList[pluginName].PluginAgent.Receive(functionName, result)
         # if no plugin is observing this name then return the original result
         return result
